@@ -3,6 +3,9 @@ class Ticket {
     #id;
     #title;
     #description;
+    #column; 
+    #person; 
+
     constructor(title, description) {
         this.#title = title;
         this.#description = description;
@@ -21,6 +24,22 @@ class Ticket {
         return this.#id;
     }
 
+    getColumn() {
+        return this.#column;
+    }   
+
+    setColumn(newColumn) {
+        this.#column = newColumn;
+    }
+
+    getPerson() {
+        return this.#person;
+    }   
+
+    setPerson(newPerson) {
+        this.#person = newPerson;
+    }
+
     setTicketTitle(newTitle) {
         this.#title = newTitle;
     }   
@@ -30,6 +49,11 @@ class Ticket {
 
     renderOnConsole() {
         console.log(`Ticket Info: ${this.getTicket()} - ${this.getTicketDescription()}`);
+        if (this.#person) { 
+            console.log(`Assigned to: ${this.#person.getPerson()}`);
+        } else {
+            console.log(`Assigned to: No one`);
+        }   
     }
 
 
