@@ -33,6 +33,13 @@ class Column {
      return ticket;
     }
 
+    removeTicket(ticketId) {
+       let ticketIndex = this.#tickets.findIndex(ticket => ticket.id === ticketId);
+    }
+
+    moveTicketTo(ticket, targetColumn) {
+    }
+
 
 // end of class
 }
