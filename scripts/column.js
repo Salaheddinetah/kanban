@@ -20,6 +20,7 @@ class Column {
         }
         return true
     }
+
     addTicket(ticket) {
         if (!this.canAddTicket()) {
             throw new Error('Cannot add more tickets to this column');
@@ -33,9 +34,16 @@ class Column {
      return ticket;
     }
 
-    removeTicket(ticketId) {
-       let ticketIndex = this.#tickets.findIndex(ticket => ticket.id === ticketId);
+  removeTicket(ticketId) {
+   let index = this.#tickets.findIndex(ticket => ticket.id === ticketId);
+    if (index === -1) {
+        throw new Error('Ticket not found in this column');
     }
+    
+    let removedTicket = this.#tickets.splice(index, 1);
+    removedTicket.column = null;
+    return removedTicket;
+}
 
     moveTicketTo(ticket, targetColumn) {
     }
