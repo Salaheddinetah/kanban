@@ -8,7 +8,8 @@ let persons = [
 
 for (let i = 1; i <= 15; i++) {
     let ticket = new Ticket(`Ticket id: # ${i}`);
-    ticket.setTicketDescription(`this ticket was automatically generated`);
+    ticket.description = `this ticket was automatically generated`;
+    ticket.id = i;
 
     board.addTicket(ticket);
 
@@ -29,7 +30,7 @@ for (let i = 1; i <= 15; i++) {
     }
 
     let randomPersonIndex = Math.floor(Math.random() * persons.length);
-    ticket.setPerson(persons[randomPersonIndex].getPerson()); 
+    ticket.person = persons[randomPersonIndex];    
 }
 
 board.renderOnConsole();

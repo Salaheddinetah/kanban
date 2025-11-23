@@ -9,12 +9,12 @@ class Person {
     constructor(firstName, lastName) {
         this.#firstName = firstName;
         this.#lastName = lastName; 
-        this.#id = Person.#lastId + 1;
+        this.#id = Person.#lastId++;
     }
 
     //Person Getter 
 
-    getPerson() {
+    get person() {
         return `User: ${this.#firstName} ${this.#lastName} with UserId : ${this.#id}`;
     }
 

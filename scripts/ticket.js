@@ -13,43 +13,48 @@ class Ticket {
         this.#person;
     }
 
-    getTicket() {
+    get ticket() {
         return `${this.#title}`;    
     }
 
-    getTicketDescription() {
+    get description() {
         return `Description: ${this.#description}`;    
     }
 
-    getTicketId() { 
+     get id() { 
         return this.#id;
     }
 
-    getColumn() {
+    set id(newId) {
+        this.#id = newId;
+    }   
+
+    get column() {
         return this.#column;
     }   
 
-    setColumn(newColumn) {
+    set column(newColumn) {
         this.#column = newColumn;
     }
 
-    setTicketTitle(newTitle) {
+    set title(newTitle) {
         this.#title = newTitle;
-    }   
-    setTicketDescription(newDescription) {
+    }  
+
+    set description (newDescription) {
         this.#description = newDescription;
     }
 
-    getPerson() {
+    get person() {
         return this.#person;
     }
 
-    setPerson(newPerson) {
+    set person(newPerson) {
         this.#person = newPerson;
     }
 
     renderOnConsole() {
-        console.log(`${this.getTicket()} - ${this.getTicketDescription()} - Assigned to: ${this.getPerson()}`);           
+        console.log(`${this.#id} - ${this.#description} - Assigned to: ${this.#person ? this.#person.person : 'Unassigned'}`);           
 }
 
 
