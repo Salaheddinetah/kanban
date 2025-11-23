@@ -2,7 +2,7 @@ class Column {
     #columnName;
     #tickets;
 
-    constructor(columnName, ticket) {
+    constructor(columnName, tickets) {
         this.#columnName = columnName;
         this.#tickets = [];
     }
@@ -10,7 +10,7 @@ class Column {
     get columnName() {
         return this.#columnName;    
     }
-    get ticket() {
+    get tickets() {
         return this.#tickets;    
         }
 
@@ -45,8 +45,13 @@ class Column {
     return removedTicket;
 }
 
-    moveTicketTo(ticket, targetColumn) {
-    }
+renderOnConsole() {
+    console.log(`Column: ${this.#columnName}`); 
+    this.#tickets.forEach(ticket => {
+        ticket.renderOnConsole();
+    });
+}
+
 
 
 // end of class

@@ -18,13 +18,8 @@ class Person {
         return `User: ${this.#firstName} ${this.#lastName} with UserId : ${this.#id}`;
     }
 
-    // Render on Console - simply for testing purposes
 
-    renderOnConsole() {
-        console.log(`Full Name: ${this.getPerson()}`);
-
-    }
-
+  
 
 
     //End of class

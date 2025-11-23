@@ -54,6 +54,14 @@ class Board {
 
 }
 
+renderOnConsole() {
+    console.log('Board State:'); 
+    this.#columns.forEach(column => {
+        column.renderOnConsole();
+    });
+}
+
+
 
     //end of class
 }

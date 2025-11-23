@@ -1,16 +1,18 @@
 let board = new Board('To Do', 'In Progress', 'Done');
 
 let persons = [
-    new Person('Alice'),
-    new Person('Bob'),
-    new Person('Charlie')
+    new Person('Alice',''),
+    new Person('Bob',''),
+    new Person('Charlie','')
 ];
 
-for (let i = 1; i <= 9; i++) {
-    let ticket = new Ticket(`Ticket with ID ${i}`);
-    ticket.description = `Ticket ${i} is automatically generated for testing purposes.`;
+for (let i = 1; i <= 15; i++) {
+    let ticket = new Ticket(`Ticket id: # ${i}`);
+    ticket.setTicketDescription(`this ticket was automatically generated`);
 
     board.addTicket(ticket);
+
+   
 
     let randomColumnIndex = Math.floor(Math.random() * 3);
     
@@ -27,5 +29,7 @@ for (let i = 1; i <= 9; i++) {
     }
 
     let randomPersonIndex = Math.floor(Math.random() * persons.length);
-    ticket.person = persons[randomPersonIndex];
+    ticket.setPerson(persons[randomPersonIndex].getPerson()); 
 }
+
+board.renderOnConsole();
