@@ -1,2 +1,31 @@
-let ida = new Person("Ida", "Melchert");
-ida.renderOnConsole();
+let board = new Board('To Do', 'In Progress', 'Done');
+
+let persons = [
+    new Person('Alice'),
+    new Person('Bob'),
+    new Person('Charlie')
+];
+
+for (let i = 1; i <= 9; i++) {
+    let ticket = new Ticket(`Ticket with ID ${i}`);
+    ticket.description = `Ticket ${i} is automatically generated for testing purposes.`;
+
+    board.addTicket(ticket);
+
+    let randomColumnIndex = Math.floor(Math.random() * 3);
+    
+    switch (randomColumnIndex) {
+        case 0:
+            board.moveTicket(ticket.id, 'To Do');
+            break;
+        case 1:
+            board.moveTicket(ticket.id, 'In Progress');
+            break;
+        case 2:
+            board.moveTicket(ticket.id, 'Done');
+            break;
+    }
+
+    let randomPersonIndex = Math.floor(Math.random() * persons.length);
+    ticket.person = persons[randomPersonIndex];
+}
