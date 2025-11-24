@@ -1,4 +1,8 @@
-class Board {
+import { Person } from "./person.js";
+import { Ticket } from "./ticket.js";
+import { Column } from "./column.js";
+
+export class Board {
     #columns; 
 
     constructor(...columnNames) 

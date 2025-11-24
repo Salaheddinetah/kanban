@@ -1,4 +1,6 @@
-class Column {
+import { Ticket } from "./ticket.js";
+
+export class Column {
     #columnName;
     #tickets;
 

@@ -1,4 +1,7 @@
-class Ticket {
+import { Person } from "./person.js";
+
+
+export class Ticket {
     static #lastId = 0;
     #id;
     #title;

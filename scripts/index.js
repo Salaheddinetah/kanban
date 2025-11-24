@@ -1,3 +1,9 @@
+import { Board } from "./board.js";
+import { Person } from "./person.js";
+import { Ticket } from "./ticket.js";   
+
+
+
 let board = new Board('To Do', 'In Progress', 'Done');
 
 let persons = [
