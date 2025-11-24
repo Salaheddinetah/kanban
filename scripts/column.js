@@ -52,6 +52,16 @@ renderOnConsole() {
     });
 }
 
+renderHtml(columnContainer) {
+    let columnDiv = document.createElement('div');
+    columnDiv.className = 'grid-column'; 
+    columnDiv.innerHTML = `<h2>${this.#columnName}</h2>`;
+    this.#tickets.forEach(ticket => {
+        ticket.renderInHTML(columnDiv);
+    });
+    columnContainer.appendChild(columnDiv);
+}
+
 
 
 // end of class

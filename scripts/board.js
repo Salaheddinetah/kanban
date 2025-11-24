@@ -61,6 +61,12 @@ renderOnConsole() {
     });
 }
 
+renderInHTML(boardContainer) {
+    this.#columns.forEach(column => {
+        column.renderHtml(boardContainer);
+    });
+}
+
 
 
     //end of class

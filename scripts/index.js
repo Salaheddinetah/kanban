@@ -34,3 +34,5 @@ for (let i = 1; i <= 15; i++) {
 }
 
 board.renderOnConsole();
+
+board.renderInHTML(document.getElementById('board'));

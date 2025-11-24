@@ -47,4 +47,18 @@ main
     align-self: flex-end
 }
 
+.grid-column {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+#board {
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+  width: 75%
+}
+
 
