@@ -1,26 +1,36 @@
+
 import express from "express";
-import livereload from "connect-livereload";
+import path from "path";
+import livereload from "livereload";
 import connectLivereload from "connect-livereload";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 
-app.use(express.static("../Client"));
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-// open livereload high port and start to watch public directory for changes
+
+const app = express();
+
+// LiveReload server
 const liveReloadServer = livereload.createServer();
-liveReloadServer.watch(path.join(__dirname, 'Client', 'Server'));
+liveReloadServer.watch(path.join(__dirname, "Client"));
 
-// ping browser on Express boot, once browser has reconnected and handshaken
 liveReloadServer.server.once("connection", () => {
   setTimeout(() => {
     liveReloadServer.refresh("/");
   }, 100);
 });
 
-const app = express();
-
-// monkey patch every served HTML so they know of changes
+// Inject livereload script into served HTML
 app.use(connectLivereload());
-app.listen(3000, () => {
-  console.log("Server is running on http://localhost:3000");
+
+// Serve static files
+app.use(express.static(path.join(__dirname, "Client")));
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "Client/index.html"));
 });
 
-
+const PORT = 3000;
+app.listen(PORT, () => console.log("Server running on port " + PORT));
