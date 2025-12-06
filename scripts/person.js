@@ -1,26 +1,29 @@
-class Person {
-  
+export class Person {
+    static #lastId = 0;
+
+    #id;
     #firstName;
     #lastName;
-    static #lastId = 1000;
-    #id;
-
 
     constructor(firstName, lastName) {
-        this.#firstName = firstName;
-        this.#lastName = lastName; 
         this.#id = Person.#lastId++;
+        this.#firstName = firstName;
+        this.#lastName = lastName;
     }
 
-    //Person Getter 
-
-    get person() {
-        return `User: ${this.#firstName} ${this.#lastName} with UserId : ${this.#id}`;
+    get id() {
+        return this.#id;
     }
 
-
-  
-
-
-    //End of class
+    get firstName() {
+        return this.#firstName;
     }
+
+    get lastName() {
+        return this.#lastName;
+    }
+
+    renderOnConsole() {
+        console.log(`      Person[id=${this.id}, first name=${this.firstName}, last name=${this.lastName}]`);
+    }
+}
