@@ -6,7 +6,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cross-env PORT=5000 nodemon server.js"
+    "start": "cross-env PORT=5000 nodemon server.js",
+    "live": "nodemon server.js" ,
+    "watch": "nodemon --ext js,pug --ignore public"
   },
   "repository": {
     "type": "git",
