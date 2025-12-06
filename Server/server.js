@@ -1,21 +1,18 @@
-
 import express from "express";
 import path from "path";
 import livereload from "livereload";
 import connectLivereload from "connect-livereload";
-
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-
 const app = express();
 
 // LiveReload server
 const liveReloadServer = livereload.createServer();
-liveReloadServer.watch(path.join(__dirname, "Client"));
+liveReloadServer.watch(path.join(__dirname, "..", "Client"));
 
 liveReloadServer.server.once("connection", () => {
   setTimeout(() => {
@@ -23,14 +20,14 @@ liveReloadServer.server.once("connection", () => {
   }, 100);
 });
 
-// Inject livereload script into served HTML
+// Inject livereload into HTML
 app.use(connectLivereload());
 
-// Serve static files
-app.use(express.static(path.join(__dirname, "Client")));
+// Serve Client folder
+app.use(express.static(path.join(__dirname, "..", "Client")));
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "Client/index.html"));
+  res.sendFile(path.join(__dirname, "..", "Client", "index.html"));
 });
 
 const PORT = 8000;
