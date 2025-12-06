@@ -3,6 +3,7 @@ import express from "express";
 import path from "path";
 import livereload from "livereload";
 import connectLivereload from "connect-livereload";
+
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 
@@ -32,5 +33,5 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "Client/index.html"));
 });
 
-const PORT = 3000;
+const PORT = 8000;
 app.listen(PORT, () => console.log("Server running on port " + PORT));
