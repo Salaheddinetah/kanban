@@ -20,5 +20,8 @@
   "homepage": "https://github.com/Salaheddinetah/kanban#readme",
   "dependencies": {
     "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "cross-env": "^10.1.0"
   }
 }
