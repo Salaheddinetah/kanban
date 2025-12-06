@@ -25,10 +25,10 @@ nav li {
 
 main
 {
-    display: flex;
     flex-direction: column;
-    align-items: center;
     margin: 1%;
+    align-items: center;
+    
 }
 
 .ticket {
@@ -37,6 +37,12 @@ main
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 1em;
     margin-bottom: 1em;
+    width: 100%;
+}
+
+ol {
+    list-style: none;
+    padding: 1rem;
 }
 
 .ticket-id {
@@ -51,18 +57,18 @@ main
 }
 
 .grid-column {
-  list-style: none;
   display: flex;
   flex-direction: column;
   gap: 1em;
+  width: 100%;
 }
 
 #board {
   display: flex;
   flex-direction: row;
   align-self: center;
-  gap: 2em;
-  width: 90%;
+  gap: 1em;
+  width: 100%;
 }
 
 
