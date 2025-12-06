@@ -27,15 +27,9 @@ main
 {
     display: flex;
     flex-direction: column;
-    margin: 10%;
     align-items: center;
-    
 }
 
-section {
-flex: 1;
-width: 100%;    
-}
 
 aside {
     flex: 1;
@@ -73,7 +67,8 @@ padding: 1rem;
 .grid-column {
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
 }
 
 #board {

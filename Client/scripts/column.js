@@ -1,3 +1,6 @@
+import { Ticket } from "./ticket.js";
+import { updatePieChart } from './pie-chart.js';
+
 export class Column {
     #board;
     #columnName;
@@ -36,6 +39,7 @@ export class Column {
         ticket.column = this;
 
         return ticket;
+         
     }
 
     // Verwijdert een ticket op basis van zijn ID.
@@ -70,6 +74,9 @@ export class Column {
         this.#tickets.forEach(async t => {
             await t.renderOnPage(this.#columnTicketsContainerHtmlElement);
         });
+
+        // Update pie chart
+        updatePieChart(this.columnName, this.tickets.length);
     }
 
     #wireDragAndDropEventHandlers(columnHtmlElement) {
