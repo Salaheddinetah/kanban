@@ -1,4 +1,6 @@
 import { Column } from "./column.js";
+import { updatePieChart } from "./pie-chart.js";
+
 
 export class Board {
     #columns;
@@ -18,6 +20,7 @@ export class Board {
     // Voegt het ticket toe aan de eerste column.
     addTicket(ticket) {
         this.#columns[0].addTicket(ticket);
+        updatePieChart(this.#columns[0].columnName, this.#columns[0].tickets.length);
         return ticket;
     }
 
@@ -47,6 +50,8 @@ export class Board {
         if (newColumn.canAddTicket()) {
             oldColumn.removeTicket(ticket.id);
             newColumn.addTicket(ticket);     
+ updatePieChart(oldColumn.columnName, oldColumn.tickets.length);
+  updatePieChart(newColumn.columnName, newColumn.tickets.length);
 
             return true;
         } else {
