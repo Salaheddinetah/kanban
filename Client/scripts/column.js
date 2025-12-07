@@ -65,11 +65,20 @@ export class Column {
         columnHtmlElement.className = "grid-column";
         columnHtmlElement.innerHTML = `<h2>${this.columnName}</h2>`;      
         boardHtmlElement.appendChild(columnHtmlElement);
+        
+        let addtTicketButton = document.createElement("button");
+        addtTicketButton.className = "add-ticket-button";
+        addtTicketButton.innerText = "Add new ticket";
+
+        columnHtmlElement.appendChild(addtTicketButton);
+
 
         // Koppelen van drop event handlers.
         this.#wireDragAndDropEventHandlers(columnHtmlElement);
 
-        this.#columnTicketsContainerHtmlElement = document.createElement("ol");
+        this.#wireAddTicketEventHandler(addtTicketButton)
+
+        this.#columnTicketsContainerHtmlElement = document.createElement("ul");
         columnHtmlElement.appendChild(this.#columnTicketsContainerHtmlElement);        
         this.#tickets.forEach(async t => {
             await t.renderOnPage(this.#columnTicketsContainerHtmlElement);
@@ -93,4 +102,15 @@ export class Column {
             }
         });  
     }
+
+    #wireAddTicketEventHandler(addtTicketButton) {
+        addtTicketButton.addEventListener("click", async (e) => {
+            let newTicket = new Ticket(`New ticket in ${this.columnName}`);
+            newTicket.description = "Description...";
+            this.#board.addTicket(newTicket);
+            this.#board.moveTicket(newTicket.id, this.columnName);
+            await newTicket.renderOnPage(this.#columnTicketsContainerHtmlElement);
+        });
+    }
+
 }
